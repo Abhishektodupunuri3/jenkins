@@ -1,14 +1,12 @@
 pipeline {
-    agent {
-        label 'WS'
+             agentany  {
+        
     }
     environment {
         ENV_URL         = "pipeline.google.com"                  // Pipeline variable
         SSHCRED         = credentials('SSH_CRED') 
     }
-    options {
-        buildDiscarder(logRotator(numToKeepStr: '5')) }
-    }
+    
     parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
         text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
@@ -17,16 +15,14 @@ pipeline {
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
 
-    // triggers { pollSCM('*/1 * * * *') }
-
-    stages {
-        stage('Parallel Stages') {
+        stages {
+         stage('Parallel Stages') {
             parallel {
                 stage('In Parallel 1') {
                         steps {
                             echo "In Parallel 1"
                             sh "sleep 1"
-                            
+                            sh "hostname"
                         }
                     }
                 stage('In Parallel 2') {
@@ -108,3 +104,4 @@ pipeline {
         }
     }
 }    
+
