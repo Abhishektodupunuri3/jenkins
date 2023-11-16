@@ -44,6 +44,7 @@ pipeline {
                    echo "This is stage three"
                    echo "name of the URL is ${ENV_URL}"
                    echo -e "\\e[31m hi luv u sarikha"
+                   echo -e "\\e[31m hi luv u chinky"
                 '''
             }
         }
