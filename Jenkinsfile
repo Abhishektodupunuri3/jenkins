@@ -62,6 +62,11 @@ pipeline {
                 }
       }
     }
+      post {
+            aborted {
+                echo 'i love sarikha'
+            }
+      }
 
 
 }
