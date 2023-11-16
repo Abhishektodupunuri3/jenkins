@@ -25,6 +25,7 @@ pipeline {
                  sh '''echo devops
                  echo aws 
                  echo b54
+                 echo AS
                  echo Nme of the URL is ${ENV_URL}
                  
                  env
