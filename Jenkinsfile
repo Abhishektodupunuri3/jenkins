@@ -26,7 +26,7 @@ pipeline {
                         steps {
                             echo "In Parallel 1"
                             sh "sleep 1"
-                            sh "hostname"
+                            
                         }
                     }
                 stage('In Parallel 2') {
@@ -107,24 +107,4 @@ pipeline {
             }
         }
     }
-
-    post { 
-        always { 
-            cleanWs()
-        }
-    }
-
-
-// Examples of scripted pipeline
-
-// node {
-//     stage('Example') {
-//         if (env.BRANCH_NAME == 'master') {
-//             echo 'I only execute on the master branch'
-           
-//         } else {
-//             echo 'I execute elsewhere'
-//              sh "env"
-//         }
-//     }
-// }
+}    
