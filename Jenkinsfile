@@ -113,7 +113,7 @@ pipeline {
             cleanWs()
         }
     }
-}
+
 
 // Examples of scripted pipeline
 
