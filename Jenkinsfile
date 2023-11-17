@@ -99,6 +99,12 @@ pipeline {
                 '''
             }
         }
+              post {
+                      always {
+                                echo 'Hello the stages are completed'
+                             }
+                    }
+    
     }
 
 }
