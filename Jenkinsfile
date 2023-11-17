@@ -26,6 +26,7 @@ pipeline {
                           echo b54
                           echo Name of the URL is ${ENV_URL}
                           env
+                          sleep 10
                     '''
                }
         }
@@ -34,21 +35,25 @@ pipeline {
                  environment {
                                ENV_URL = "stage.google.com"           //STAGE VARIABLE
                            }
-                 input {
-                           message "Should we continue?"
-                              ok "Yes, we should."
-                                 submitter "alice,bob"
-                       parameters {
-                                         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                                }
-                    }           
+                 //input {
+                           //message "Should we continue?"
+                           //   ok "Yes, we should."
+                         //        submitter "alice,bob"
+                       //parameters {
+                       //                  string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                     //           }
+                   // }           
                   steps {
                           echo "This is stage two"
                           echo "Name of the URL is ${ENV_URL}"
+                          sleep 10
                         }
         }
             stage ('stage three') {
-                when{branch 'dev'}
+                when{   
+                        branch 'dev'
+                        changeset "**/*.js"
+                    }
          steps {
                 sh'''
                    echo "This is stage three"
@@ -64,6 +69,7 @@ pipeline {
                    echo "This is stage foure"
                    echo "name of the URL is ${ENV_URL}"
                    echo -e "\\e[31m hi sunny luv u chinky"
+                   sleep 10
                   
                 '''
             }
