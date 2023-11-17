@@ -1,5 +1,7 @@
 pipeline {
-    agent any 
+    agent {
+            label 'WS'
+          }
 
     environment {
         ENV_URL          = "pipeline.google.com"           //PIPELINE VARIABLE
