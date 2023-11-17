@@ -101,7 +101,7 @@ pipeline {
         }
               post {
                       always {
-                                echo 'Hello the stages are completed'
+                                echo "Hello the stages are completed"
                              }
                     }
     
