@@ -5,13 +5,14 @@ pipeline {
         ENV_URL          = "pipeline.google.com"           //PIPELINE VARIABLE
         SSHCRED          = credentials('SSH_CRED')
     }
-     parameters {
-                               string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                               text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
-                               booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-                               choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-                               password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
-                }
+    // parameters {
+      //  string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+       // text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+       // booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+        //choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+        //password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+    //}
+      
      triggers { pollSCM('*/1 * * * *') }
 
     
@@ -33,10 +34,18 @@ pipeline {
                  environment {
                                ENV_URL = "stage.google.com"           //STAGE VARIABLE
                            }
-         steps {
-                echo "This is stage two"
-                 echo "Name of the URL is ${ENV_URL}"
-            }
+                 input {
+                           message "Should we continue?"
+                              ok "Yes, we should."
+                                 submitter "alice,bob"
+                       parameters {
+                                         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                                }
+                    }           
+                  steps {
+                          echo "This is stage two"
+                          echo "Name of the URL is ${ENV_URL}"
+                        }
         }
             stage ('stage three') {
          steps {
