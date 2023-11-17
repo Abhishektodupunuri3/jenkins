@@ -13,7 +13,7 @@ pipeline {
                                password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
                     }
       
-     triggers { pollSCM('*/1 * * * *') }
+    // triggers { pollSCM('*/1 * * * *') }
 
     
     stages {
@@ -22,20 +22,20 @@ pipeline {
                 stage('In Parallel 1') {
                         steps {
                             echo "In Parallel 1"
-                            sleep 15
+                            sleep 1
                             
                         }
                     }
                 stage('In Parallel 2') {
                         steps {
                             echo "In Parallel 2"
-                            sleep 15
+                            sleep 1
                     }
                 }
                 stage('In Parallel 3') {
                         steps {
                             echo "In Parallel 3"
-                            sleep 15
+                            sleep 1
                     }
                 }
             }
@@ -49,7 +49,7 @@ pipeline {
                           echo b54
                           echo Name of the URL is ${ENV_URL}
                           env
-                          sleep 10
+                          sleep 1
                     '''
                }
         }
@@ -69,7 +69,7 @@ pipeline {
                   steps {
                           echo "This is stage two"
                           echo "Name of the URL is ${ENV_URL}"
-                          sleep 10
+                          sleep 1
                         }
         }
             stage ('stage three') {
@@ -94,16 +94,16 @@ pipeline {
                    echo "This is stage foure"
                    echo "name of the URL is ${ENV_URL}"
                    echo -e "\\e[31m hi sunny luv u chinky"
-                   sleep 10
+                   sleep 1
                   
                 '''
             }
         }
-              post {
-                      always {
-                                cleanWs()
-                             }
-                   }
+            //  post {
+              //        always {
+                //                cleanWs()
+                  //           }
+                   //}
     
     }
 
