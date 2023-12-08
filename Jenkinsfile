@@ -58,14 +58,14 @@ pipeline {
                  environment {
                                ENV_URL = "stage.google.com"           //STAGE VARIABLE
                            }
-                 //input {
+                 /*input {
                            message "Should we continue?"
                            ok "Yes, we should."
                            submitter "alice,bob"
                     parameters {
                                     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
                                 }
-                    }           
+                    }  */         
                   steps {
                           echo "This is stage two"
                           echo "Name of the URL is ${ENV_URL}"
@@ -99,11 +99,11 @@ pipeline {
                 '''
             }
         }
-            //  post {
-              //        always {
-                //                cleanWs()
-                  //           }
-                   //}
+            /*  post {
+                      always {
+                                cleanWs()
+                            }
+                   }*/
     
     }
 
